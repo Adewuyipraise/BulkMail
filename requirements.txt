@@ -1,5 +1,6 @@
 streamlit
 pandas
+openpyxl
 # The 'email' and 'smtplib' modules are part of Python's standard library 
 # and do not need to be listed here.
 # 'io' and 'mimetypes' are also standard.
