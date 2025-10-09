@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import streamlit.components.v1 as components
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -13,6 +14,36 @@ import mimetypes
 # SMTP Details (Note: SENDER_EMAIL is now dynamic)
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
+#--- Adsense Configuration ---
+def display_adsense_ad():
+    """Renders the Google AdSense code."""
+    # --------------------------------------------------------------------------------
+    # IMPORTANT: Replace the placeholders below with your ACTUAL AdSense code.
+    # --------------------------------------------------------------------------------
+
+    # The entire ad loading HTML, including the <script> tags.
+    # The 'google-js' is for the auto ads script, and the 'ad-unit-js' is for the specific ad block.
+    adsense_html = """
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6828896848803720"
+     crossorigin="anonymous"></script>
+    
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center;"
+         data-ad-client="YOUR_ADSENSE_CLIENT_ID"
+         data-ad-slot="YOUR_AD_UNIT_SLOT_ID"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    """
+    
+    # Render the HTML component
+    components.html(
+        adsense_html, 
+        height=150, # Adjust height based on the expected size of the ad
+        scrolling=False
+    )
 
 # --- Core Email Logic ---
 # SENDER_EMAIL parameter added to the function signature
@@ -118,9 +149,16 @@ def app_ui():
     
     st.set_page_config(page_title="Bulk Email Campaign Sender", layout="wide")
     st.title("📧 Bulk Email Campaign Sender")
-    
+
     st.info("Remember to use a **Gmail App Password** and ensure your account has 2FA enabled and App Passwords set up.")
 
+    # --- AdSense Placement ---
+    display_adsense_ad()
+    # -------------------------
+    
+    st.info("Remember to use a **Gmail App Password**...")
+
+    
     # --- 1. Credentials ---
     with st.expander("1. Email Credentials"):
         # NEW INPUT: Sender Email
