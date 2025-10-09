@@ -155,7 +155,7 @@ def app_ui():
     st.info("Remember to use a **Gmail App Password** and ensure your account has 2FA enabled and App Passwords set up.")
 
     # --- AdSense Placement ---
-    display_adsense_ad()
+    #display_adsense_ad()
     # -------------------------
     
     st.info("Remember to use a **Gmail App Password**...")
