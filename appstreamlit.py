@@ -10,10 +10,6 @@ from email.utils import formatdate
 import io
 import mimetypes 
 
-# --- Configuration ---
-# SMTP Details (Note: SENDER_EMAIL is now dynamic)
-SMTP_SERVER = "smtp.gmail.com"
-SMTP_PORT = 587
 #--- Adsense Configuration ---
 def display_adsense_ad():
     """Renders the Google AdSense code."""
@@ -26,16 +22,16 @@ def display_adsense_ad():
     adsense_html = """
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6828896848803720"
      crossorigin="anonymous"></script>
-    
-    <ins class="adsbygoogle"
-         style="display:block; text-align:center;"
-         data-ad-client="YOUR_ADSENSE_CLIENT_ID"
-         data-ad-slot="YOUR_AD_UNIT_SLOT_ID"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+<!-- Bulk Mail -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6828896848803720"
+     data-ad-slot="8587949026"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
     """
     
     # Render the HTML component
@@ -44,6 +40,12 @@ def display_adsense_ad():
         height=150, # Adjust height based on the expected size of the ad
         scrolling=False
     )
+
+# --- Configuration ---
+# SMTP Details (Note: SENDER_EMAIL is now dynamic)
+SMTP_SERVER = "smtp.gmail.com"
+SMTP_PORT = 587
+
 
 # --- Core Email Logic ---
 # SENDER_EMAIL parameter added to the function signature
