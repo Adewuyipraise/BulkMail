@@ -10,6 +10,28 @@ from email.utils import formatdate
 import io
 import mimetypes 
 
+# --- ADS.TXT FILE REDIRECT WORKAROUND ---
+# This code block MUST be executed before the main app_ui() call
+# to ensure the file is served correctly for AdSense verification.
+try:
+    # Check if the page path is for ads.txt
+    if st.query_params.get("ads.txt", "") != "":
+        # Load the content of the ads.txt file from the 'static' folder
+        try:
+            with open("static/ads.txt", "r") as f:
+                ads_content = f.read()
+            st.code(ads_content, language="text")
+            # Stop execution to prevent the rest of the app from loading
+            st.stop()
+        except FileNotFoundError:
+            st.error("ads.txt file not found in the 'static' directory.")
+            st.stop()
+except AttributeError:
+    # st.query_params might not be available in older Streamlit versions/local
+    pass
+# ----------------------------------------
+
+
 #--- Adsense Configuration ---
 def display_adsense_ad():
     """Renders the Google AdSense code."""
