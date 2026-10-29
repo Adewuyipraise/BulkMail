@@ -2,6 +2,8 @@
 
 This is a Python-based web application built with **Streamlit** designed to help users send personalized bulk email campaigns directly from their own Gmail account. It is ideal for small businesses, marketing teams, or individuals who need to send customized emails to a list of recipients without relying on complex, expensive email service platforms.
 
+![Dashboard Preview](./dashboard.png)
+
 ## ✨ Features
 
   * **Custom Sender:** Send emails directly from a specified Gmail address using a secure App Password.
